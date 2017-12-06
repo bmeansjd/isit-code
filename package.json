@@ -4,11 +4,15 @@
   "description": "Code samples and utilities.",
   "main": "index.js",
   "scripts": {
-    "test": "nodemon jasmine-runner.js"
+    "test": "nodemon jasmine-runner.js",
+
+      "start": "nodemon ./bin/www",
+      "bundle": "node_modules/.bin/webpack"
+
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/charliecalvert/JsObjects.git"
+    "url": "git+ssh://git@github.com:bmeansjd/isit-code-means.git"
   },
   "keywords": [
     "Elvenware",

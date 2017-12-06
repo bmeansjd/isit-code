@@ -49,6 +49,23 @@ function reportError(err) {
     console.log('*********************************');
 }*/
 
+function runConfig(user, siteDirsOffset, useLocalConfig) {
+    'use strict';
+    return new Promise(function(resolve, reject) {
+        if (typeof useLocalConfig !== 'undefined') {
+            config.useLocalConfig = useLocalConfig;
+        }
+        config.loadAsync()
+            .then(function(configuration) {
+                createMarkdown(configuration[user], siteDirsOffset)
+                    .then(resolve);
+            })
+            .catch(function(err) {
+                throw err
+            })
+    });
+}
+
 function elvenConfig() {
     'use strict';
 }
@@ -125,6 +142,8 @@ elvenConfig.save = function() {
     const fileContents = JSON.stringify(elvenConfig.configFileContents, null, 4);
     fs.writeFileSync(configName, fileContents, 'utf8');
 };
+
+
 
 elvenConfig.saveAsync = function() {
     'use strict';
